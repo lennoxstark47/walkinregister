@@ -49,7 +49,7 @@ export default class Submit extends Component {
 
 		axios
 			.post(
-				'http://localhost:5000/api/customer/add',
+				'https://secure-dusk-73088.herokuapp.com/api/customer/add',
 				newCustomer
 			)
 			.then((res) => {

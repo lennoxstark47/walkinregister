@@ -6,6 +6,10 @@ export default class Search extends Component {
 		super();
 		this.state = {
 			phone: '',
+			name: '',
+			address: '',
+			custPhone: '',
+			pin: '',
 		};
 	}
 
@@ -18,17 +22,21 @@ export default class Search extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 
-		const searchPhone = this.state.phone;
-
 		console.log(this.state.phone);
 
 		axios
 			.get(
-				'http://localhost:5000/api/customer/getbyphone',
-				searchPhone
+				'https://secure-dusk-73088.herokuapp.com/api/customer/getbyphone/' +
+					this.state.phone
 			)
 			.then((res) => {
-				console.log(res);
+				console.log(res.data);
+				this.setState({
+					name: res.data.name,
+					custPhone: res.data.phone,
+					address: res.data.address,
+					pin: res.data.pin,
+				});
 			})
 			.catch((err) => {
 				console.log(err);
@@ -64,6 +72,28 @@ export default class Search extends Component {
 						/>
 					</div>
 				</form>
+				{/* <p>Name : {this.state.name}</p>
+				<p>Phone : {this.state.custPhone}</p>
+				<p>Address : {this.state.address}</p>
+				<p>PIN : {this.state.pin}</p> */}
+				<table className='table'>
+					<thead>
+						<tr>
+							<th scope='col'>Name</th>
+							<th scope='col'>Phone</th>
+							<th scope='col'>Address</th>
+							<th scope='col'>PIN</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{this.state.name}</td>
+							<td>{this.state.custPhone}</td>
+							<td>{this.state.address}</td>
+							<td>{this.state.pin}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		);
 	}
