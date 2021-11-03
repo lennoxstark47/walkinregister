@@ -30,6 +30,13 @@ export default class Navbar extends Component {
 									View
 								</a>
 							</li>
+							<li className='nav-item'>
+								<a
+									className='nav-link active'
+									href='/cxlist'>
+									View all customers
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

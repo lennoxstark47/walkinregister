@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import Submit from './components/Submit';
+import CxList from './components/CxList';
 import './App.css';
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 				<Navbar />
 				<Route path='/' exact component={Submit} />
 				<Route path='/view' component={Search} />
+				<Route path='/cxlist' component={CxList} />
 				<footer className='footer'>
 					<a href='https://github.com/lennoxstark47'>
 						by twisam
