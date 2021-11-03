@@ -33,6 +33,12 @@ export default class CxList extends Component {
 					<td>{customer.phone}</td>
 					<td>{customer.address}</td>
 					<td>{customer.pin}</td>
+					<td>{customer.remarks}</td>
+					{customer.isConverted ? (
+						<td>Converted</td>
+					) : (
+						<td>Not-Converted</td>
+					)}
 				</tr>
 			);
 		});
@@ -48,6 +54,8 @@ export default class CxList extends Component {
 							<th scope='col'>Phone</th>
 							<th scope='col'>Address</th>
 							<th scope='col'>PIN</th>
+							<th scope='col'>Remarks</th>
+							<th scope='col'>Converted</th>
 						</tr>
 					</thead>
 					<tbody>{this.customerList()}</tbody>
