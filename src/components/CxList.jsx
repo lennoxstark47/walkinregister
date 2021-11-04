@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class CxList extends Component {
 	constructor(props) {
@@ -28,25 +29,28 @@ export default class CxList extends Component {
 			});
 	}
 
-	customerList() {
-		return this.state.customers.map(
-			(customer) => {
-				return (
-					<tr>
-						<td>{customer.name}</td>
-						<td>{customer.phone}</td>
-						<td>{customer.address}</td>
-						<td>{customer.pin}</td>
-						<td>{customer.remarks}</td>
-						{customer.isConverted ? (
-							<td>Converted</td>
-						) : (
-							<td>Not-Converted</td>
-						)}
-					</tr>
-				);
-			}
-		);
+	customerList(props) {
+		return this.state.customers.map((customer) => {
+			return (
+				<tr>
+					<td>{customer.name}</td>
+					<td>{customer.phone}</td>
+					<td>{customer.address}</td>
+					<td>{customer.pin}</td>
+					<td>{customer.remarks}</td>
+					{customer.isConverted ? (
+						<td>Converted</td>
+					) : (
+						<td>Not-Converted</td>
+					)}
+					<td>
+						<Link to={'/edit/' + customer._id}>
+							edit
+						</Link>
+					</td>
+				</tr>
+			);
+		});
 	}
 
 	render() {

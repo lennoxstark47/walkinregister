@@ -6,22 +6,16 @@ import Submit from './components/Submit';
 import CxList from './components/CxList';
 import succesfull from './components/succesfull';
 import unsuccessfull from './components/unsuccessfull';
+import Editcx from './components/Editcx';
 import './App.css';
 function App() {
 	return (
 		<Router>
 			<div className='App'>
 				<Navbar />
-				<Route
-					path='/'
-					exact
-					component={Submit}
-				/>
+				<Route path='/' exact component={Submit} />
 				<Route path='/view' component={Search} />
-				<Route
-					path='/cxlist'
-					component={CxList}
-				/>
+				<Route path='/cxlist' component={CxList} />
 				<Route
 					path='/success'
 					component={succesfull}
@@ -30,6 +24,7 @@ function App() {
 					path='/fail'
 					component={unsuccessfull}
 				/>
+				<Route path='/edit/:id' component={Editcx} />
 				<footer className='footer'>
 					<a href='https://github.com/lennoxstark47'>
 						by twisam
