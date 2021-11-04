@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Search extends Component {
 	constructor() {
@@ -10,6 +11,8 @@ export default class Search extends Component {
 			address: '',
 			custPhone: '',
 			pin: '',
+			id: '',
+			loading: false,
 		};
 	}
 
@@ -23,6 +26,9 @@ export default class Search extends Component {
 		event.preventDefault();
 
 		console.log(this.state.phone);
+		this.setState({
+			loading: true,
+		});
 
 		axios
 			.get(
@@ -36,6 +42,8 @@ export default class Search extends Component {
 					custPhone: res.data.phone,
 					address: res.data.address,
 					pin: res.data.pin,
+					id: res.data._id,
+					loading: false,
 				});
 			})
 			.catch((err) => {
@@ -50,32 +58,53 @@ export default class Search extends Component {
 	render() {
 		return (
 			<div>
-				<h3>Search for a Customer</h3>
-				<form
-					onSubmit={this.handleSubmit}
-					className='form-control form-control-sm'>
-					<div className='form-group'>
-						<label>Phone: </label>
-						<input
-							type='text'
-							required
-							className='form-control'
-							onChange={this.onPhoneChange}
-							value={this.state.phone}
-						/>
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						marginTop: '10px',
+					}}>
+					<div
+						className='card'
+						style={{ maxWidth: '20rem' }}>
+						<div className='card-body'>
+							<h5 className='card-title'>
+								Search for a Customer
+							</h5>
+							<form
+								onSubmit={this.handleSubmit}
+								className='form-control form-control-sm'>
+								<div className='form-group'>
+									<label>Phone: </label>
+									<input
+										type='text'
+										required
+										className='form-control'
+										onChange={this.onPhoneChange}
+										value={this.state.phone}
+									/>
+								</div>
+								<div
+									className='form-group'
+									style={{
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+									}}>
+									<input
+										type='submit'
+										className='btn btn-primary'
+										value='Search'
+										style={{
+											marginTop: '5px',
+										}}
+									/>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div className='form-group'>
-						<input
-							type='submit'
-							className='btn btn-primary'
-							value='Search Customer'
-						/>
-					</div>
-				</form>
-				{/* <p>Name : {this.state.name}</p>
-				<p>Phone : {this.state.custPhone}</p>
-				<p>Address : {this.state.address}</p>
-				<p>PIN : {this.state.pin}</p> */}
+				</div>
+
 				<table className='table'>
 					<thead>
 						<tr>
@@ -85,14 +114,28 @@ export default class Search extends Component {
 							<th scope='col'>PIN</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>{this.state.name}</td>
-							<td>{this.state.custPhone}</td>
-							<td>{this.state.address}</td>
-							<td>{this.state.pin}</td>
-						</tr>
-					</tbody>
+					{this.state.loading ? (
+						<p>Loading....</p>
+					) : (
+						<tbody>
+							<tr>
+								<td>{this.state.name}</td>
+								<td>{this.state.custPhone}</td>
+								<td>{this.state.address}</td>
+								<td>{this.state.pin}</td>
+								<td>
+									{this.state.loading ? null : (
+										<Link
+											to={
+												'/edit/' + this.state.id
+											}>
+											edit
+										</Link>
+									)}
+								</td>
+							</tr>
+						</tbody>
+					)}
 				</table>
 			</div>
 		);

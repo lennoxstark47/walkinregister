@@ -30,27 +30,35 @@ export default class CxList extends Component {
 	}
 
 	customerList(props) {
-		return this.state.customers.map((customer) => {
-			return (
-				<tr>
-					<td>{customer.name}</td>
-					<td>{customer.phone}</td>
-					<td>{customer.address}</td>
-					<td>{customer.pin}</td>
-					<td>{customer.remarks}</td>
-					{customer.isConverted ? (
-						<td>Converted</td>
-					) : (
-						<td>Not-Converted</td>
-					)}
-					<td>
-						<Link to={'/edit/' + customer._id}>
-							edit
-						</Link>
-					</td>
-				</tr>
-			);
-		});
+		return this.state.customers.map(
+			(customer) => {
+				return (
+					<tr>
+						<td>
+							{customer.createdAt.substring(
+								0,
+								10
+							)}
+						</td>
+						<td>{customer.name}</td>
+						<td>{customer.phone}</td>
+						<td>{customer.address}</td>
+						<td>{customer.pin}</td>
+						<td>{customer.remarks}</td>
+						{customer.isConverted ? (
+							<td>Converted</td>
+						) : (
+							<td>Not-Converted</td>
+						)}
+						<td>
+							<Link to={'/edit/' + customer._id}>
+								edit
+							</Link>
+						</td>
+					</tr>
+				);
+			}
+		);
 	}
 
 	render() {
@@ -62,6 +70,7 @@ export default class CxList extends Component {
 					<table className='table'>
 						<thead>
 							<tr>
+								<th scope='col'>Date</th>
 								<th scope='col'>Name</th>
 								<th scope='col'>Phone</th>
 								<th scope='col'>Address</th>

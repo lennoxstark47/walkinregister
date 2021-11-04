@@ -7,6 +7,7 @@ export default class Editcx extends Component {
 		this.state = {
 			remarks: '',
 			isConverted: null,
+			name: '',
 		};
 	}
 
@@ -19,6 +20,7 @@ export default class Editcx extends Component {
 			.then((res) => {
 				this.setState({
 					isConverted: res.data.isConverted,
+					name: res.data.name,
 				});
 				console.log(res.data);
 			})
@@ -27,6 +29,7 @@ export default class Editcx extends Component {
 			});
 
 		console.log(this.state.isConverted);
+		console.log(this.state.name);
 	}
 
 	onRemarksChange = (event) => {
@@ -57,6 +60,11 @@ export default class Editcx extends Component {
 				updatedCx
 			)
 			.then((res) => {
+				if (!res) {
+					console.log('error');
+				} else {
+					window.location = '/success';
+				}
 				console.log(res.data);
 			})
 			.catch((err) => {
@@ -67,36 +75,76 @@ export default class Editcx extends Component {
 	render() {
 		return (
 			<div
-				className='input-group'
 				style={{
 					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'space-around',
+					justifyContent: 'center',
 				}}>
-				<div>
-					<span className='input-group-text'>
-						Remarks
-					</span>
-					<textarea
-						className='form-control'
-						aria-label='Remarks'
-						onChange={this.onRemarksChange}></textarea>
+				<div
+					className='card'
+					style={{
+						width: '20rem',
+						height: '20rem',
+						marginTop: '10px',
+					}}>
+					<div className='card-body'>
+						<div
+							className='input-group'
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								marginTop: '30px',
+								height: '250px',
+							}}>
+							<div
+								style={{
+									width: '80%',
+								}}>
+								<div className='card-title'>
+									<h5>{this.state.name}</h5>
+								</div>
+								<h6 className='card-subtitle mb-2 text-muted'>
+									Remarks
+								</h6>
+								<textarea
+									className='form-control'
+									aria-label='Remarks'
+									onChange={this.onRemarksChange}
+									style={{
+										height: '150px',
+									}}></textarea>
+							</div>
+							<div
+								style={{
+									display: 'flex',
+									alignItems: 'center',
+									marginTop: '5px',
+								}}>
+								<div
+									style={{ marginLeft: '5px' }}>
+									<button
+										type='button'
+										className='btn btn-primary'
+										onClick={this.onToggle}>
+										Convert
+									</button>
+								</div>
+								<div
+									style={{ marginLeft: '10px' }}>
+									<button
+										type='button'
+										className='btn btn-primary'
+										onClick={this.handleSubmit}
+										style={{
+											borderRadius: '5px',
+										}}>
+										Submit
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div>
-					<button
-						type='button'
-						className='btn btn-primary'
-						onClick={this.onToggle}>
-						Convert
-					</button>
-				</div>
-				<button
-					type='button'
-					className='btn btn-primary'
-					onClick={this.handleSubmit}
-					style={{ borderRadius: '5px' }}>
-					Submit
-				</button>
 			</div>
 		);
 	}

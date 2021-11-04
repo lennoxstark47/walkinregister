@@ -74,53 +74,75 @@ export default class Submit extends Component {
 
 	render() {
 		return (
-			<div>
-				<h3>Create new Customer</h3>
-				<form
-					onSubmit={this.handleSubmit}
-					className='form-control form-control-sm'>
-					<div className='form-group'>
-						<label>Name: </label>
-						<input
-							type='text'
-							required
-							className='form-control'
-							onChange={this.onNameChange}
-							value={this.state.name}
-						/>
-						<label>Phone: </label>
-						<input
-							type='text'
-							required
-							className='form-control'
-							onChange={this.onPhoneChange}
-							value={this.state.phone}
-						/>
-						<label>Address: </label>
-						<input
-							type='text'
-							required
-							className='form-control'
-							onChange={this.onAddressChange}
-							value={this.state.address}
-						/>
-						<label>PIN: </label>
-						<input
-							type='text'
-							required
-							className='form-control'
-							onChange={this.onPinChange}
-							value={this.state.pin}
-						/>
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+				}}>
+				<div
+					className='card border-dark mb-4'
+					style={{
+						maxWidth: '50rem',
+						marginTop: '5px',
+					}}>
+					<div className='card-header'>
+						Create new customer
 					</div>
-					<div className='form-group'>
-						<input
-							type='submit'
-							className='btn btn-primary'
-							value='Create Customer'
-						/>
-					</div>
-				</form>
+					<form
+						onSubmit={this.handleSubmit}
+						className='form-control form-control-sm'
+						style={{ padding: '50px' }}>
+						<div
+							className='form-group'
+							style={{ width: '300px' }}>
+							<label>Name: </label>
+							<input
+								type='text'
+								required
+								className='form-control'
+								onChange={this.onNameChange}
+								value={this.state.name}
+							/>
+							<label>Phone: </label>
+							<input
+								type='text'
+								required
+								className='form-control'
+								onChange={this.onPhoneChange}
+								value={this.state.phone}
+							/>
+							<label>Address: </label>
+							<input
+								type='text'
+								required
+								className='form-control'
+								onChange={this.onAddressChange}
+								value={this.state.address}
+							/>
+							<label>PIN: </label>
+							<input
+								type='text'
+								required
+								className='form-control'
+								onChange={this.onPinChange}
+								value={this.state.pin}
+							/>
+						</div>
+						<div
+							className='form-group'
+							style={{
+								marginTop: '10px',
+								marginLeft: '30%',
+							}}>
+							<input
+								type='submit'
+								className='btn btn-primary'
+								value='Create Customer'
+							/>
+						</div>
+					</form>
+				</div>
 			</div>
 		);
 	}
