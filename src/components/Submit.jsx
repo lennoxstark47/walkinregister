@@ -9,6 +9,7 @@ export default class Submit extends Component {
 			phone: '',
 			address: '',
 			pin: '',
+			success: false,
 		};
 	}
 
@@ -53,7 +54,11 @@ export default class Submit extends Component {
 				newCustomer
 			)
 			.then((res) => {
-				console.log(res.data);
+				if (res) {
+					window.location = '/success';
+				} else {
+					window.location = '/fail';
+				}
 			})
 			.catch((err) => {
 				console.log(err);

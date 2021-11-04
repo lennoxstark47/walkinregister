@@ -5,11 +5,13 @@ export default class CxList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			loading: false,
 			customers: [],
 		};
 	}
 
 	componentDidMount() {
+		this.setState({ loading: true });
 		axios
 			.get(
 				'https://secure-dusk-73088.herokuapp.com/api/customer/list'
@@ -18,6 +20,7 @@ export default class CxList extends Component {
 				console.log(res.data);
 				this.setState({
 					customers: res.data,
+					loading: false,
 				});
 			})
 			.catch((err) => {
@@ -26,40 +29,46 @@ export default class CxList extends Component {
 	}
 
 	customerList() {
-		return this.state.customers.map((customer) => {
-			return (
-				<tr>
-					<td>{customer.name}</td>
-					<td>{customer.phone}</td>
-					<td>{customer.address}</td>
-					<td>{customer.pin}</td>
-					<td>{customer.remarks}</td>
-					{customer.isConverted ? (
-						<td>Converted</td>
-					) : (
-						<td>Not-Converted</td>
-					)}
-				</tr>
-			);
-		});
+		return this.state.customers.map(
+			(customer) => {
+				return (
+					<tr>
+						<td>{customer.name}</td>
+						<td>{customer.phone}</td>
+						<td>{customer.address}</td>
+						<td>{customer.pin}</td>
+						<td>{customer.remarks}</td>
+						{customer.isConverted ? (
+							<td>Converted</td>
+						) : (
+							<td>Not-Converted</td>
+						)}
+					</tr>
+				);
+			}
+		);
 	}
 
 	render() {
 		return (
 			<div>
-				<table className='table'>
-					<thead>
-						<tr>
-							<th scope='col'>Name</th>
-							<th scope='col'>Phone</th>
-							<th scope='col'>Address</th>
-							<th scope='col'>PIN</th>
-							<th scope='col'>Remarks</th>
-							<th scope='col'>Converted</th>
-						</tr>
-					</thead>
-					<tbody>{this.customerList()}</tbody>
-				</table>
+				{this.state.loading ? (
+					<p>Loading Data....</p>
+				) : (
+					<table className='table'>
+						<thead>
+							<tr>
+								<th scope='col'>Name</th>
+								<th scope='col'>Phone</th>
+								<th scope='col'>Address</th>
+								<th scope='col'>PIN</th>
+								<th scope='col'>Remarks</th>
+								<th scope='col'>Converted</th>
+							</tr>
+						</thead>
+						<tbody>{this.customerList()}</tbody>
+					</table>
+				)}
 			</div>
 		);
 	}
