@@ -93,7 +93,8 @@ export default class Editcx extends Component {
 				<button
 					type='button'
 					className='btn btn-primary'
-					onClick={this.handleSubmit}>
+					onClick={this.handleSubmit}
+					style={{ borderRadius: '5px' }}>
 					Submit
 				</button>
 			</div>
