@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Navbar extends Component {
 	render() {
 		return (
-			<nav className='navbar navbar-dark bg-dark navbar-expand'>
+			<nav className='navbar navbar-dark bg-dark navbar-expand sticky-top'>
 				<div className='container-fluid'>
 					<a
 						className='navbar-brand'
@@ -27,7 +27,14 @@ export default class Navbar extends Component {
 								<a
 									className='nav-link active'
 									href='/view'>
-									View
+									Search
+								</a>
+							</li>
+							<li className='nav-item'>
+								<a
+									className='nav-link active'
+									href='/getByDate'>
+									Search By Date range
 								</a>
 							</li>
 							<li className='nav-item'>

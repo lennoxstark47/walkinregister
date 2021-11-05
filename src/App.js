@@ -7,15 +7,23 @@ import CxList from './components/CxList';
 import succesfull from './components/succesfull';
 import unsuccessfull from './components/unsuccessfull';
 import Editcx from './components/Editcx';
+import SearchByDate from './components/SearchByDate';
 import './App.css';
 function App() {
 	return (
 		<Router>
 			<div className='App'>
 				<Navbar />
-				<Route path='/' exact component={Submit} />
+				<Route
+					path='/'
+					exact
+					component={Submit}
+				/>
 				<Route path='/view' component={Search} />
-				<Route path='/cxlist' component={CxList} />
+				<Route
+					path='/cxlist'
+					component={CxList}
+				/>
 				<Route
 					path='/success'
 					component={succesfull}
@@ -24,7 +32,14 @@ function App() {
 					path='/fail'
 					component={unsuccessfull}
 				/>
-				<Route path='/edit/:id' component={Editcx} />
+				<Route
+					path='/edit/:id'
+					component={Editcx}
+				/>
+				<Route
+					path='/getByDate'
+					component={SearchByDate}
+				/>
 				<footer className='footer'>
 					<a href='https://github.com/lennoxstark47'>
 						by twisam
