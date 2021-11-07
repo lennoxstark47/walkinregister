@@ -8,22 +8,17 @@ import succesfull from './components/succesfull';
 import unsuccessfull from './components/unsuccessfull';
 import Editcx from './components/Editcx';
 import SearchByDate from './components/SearchByDate';
+import Converted from './components/Converted';
+import Nonconverted from './components/Nonconverted';
 import './App.css';
 function App() {
 	return (
 		<Router>
 			<div className='App'>
 				<Navbar />
-				<Route
-					path='/'
-					exact
-					component={Submit}
-				/>
+				<Route path='/' exact component={Submit} />
 				<Route path='/view' component={Search} />
-				<Route
-					path='/cxlist'
-					component={CxList}
-				/>
+				<Route path='/cxlist' component={CxList} />
 				<Route
 					path='/success'
 					component={succesfull}
@@ -32,13 +27,18 @@ function App() {
 					path='/fail'
 					component={unsuccessfull}
 				/>
-				<Route
-					path='/edit/:id'
-					component={Editcx}
-				/>
+				<Route path='/edit/:id' component={Editcx} />
 				<Route
 					path='/getByDate'
 					component={SearchByDate}
+				/>
+				<Route
+					path='/converted'
+					component={Converted}
+				/>
+				<Route
+					path='/nonconverted'
+					component={Nonconverted}
 				/>
 				<footer className='footer'>
 					<a href='https://github.com/lennoxstark47'>

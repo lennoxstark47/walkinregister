@@ -44,6 +44,20 @@ export default class Navbar extends Component {
 									View all customers
 								</a>
 							</li>
+							<li className='nav-item'>
+								<a
+									className='nav-link active'
+									href='/converted'>
+									See All Converted
+								</a>
+							</li>
+							<li className='nav-item'>
+								<a
+									className='nav-link active'
+									href='/nonconverted'>
+									See Non-Converted
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
