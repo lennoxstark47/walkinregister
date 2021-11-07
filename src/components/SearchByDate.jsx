@@ -37,7 +37,7 @@ export default class SearchByDate extends Component {
 
 		axios
 			.post(
-				'https://secure-dusk-73088.herokuapp.com/api/customer/getByDate',
+				'https://iekccxregister.herokuapp.com/api/customer/getByDate',
 				dateRange
 			)
 			.then((res) => {

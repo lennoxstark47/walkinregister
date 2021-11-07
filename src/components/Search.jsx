@@ -32,7 +32,7 @@ export default class Search extends Component {
 
 		axios
 			.get(
-				'https://secure-dusk-73088.herokuapp.com/api/customer/getbyphone/' +
+				'https://iekccxregister.herokuapp.com/api/customer/getbyphone/' +
 					this.state.phone
 			)
 			.then((res) => {
@@ -125,10 +125,7 @@ export default class Search extends Component {
 								<td>{this.state.pin}</td>
 								<td>
 									{this.state.loading ? null : (
-										<Link
-											to={
-												'/edit/' + this.state.id
-											}>
+										<Link to={'/edit/' + this.state.id}>
 											edit
 										</Link>
 									)}

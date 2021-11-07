@@ -50,7 +50,7 @@ export default class Submit extends Component {
 
 		axios
 			.post(
-				'https://secure-dusk-73088.herokuapp.com/api/customer/add',
+				'https://iekccxregister.herokuapp.com/api/customer/add',
 				newCustomer
 			)
 			.then((res) => {

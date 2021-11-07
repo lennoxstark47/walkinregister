@@ -15,7 +15,7 @@ export default class CxList extends Component {
 		this.setState({ loading: true });
 		axios
 			.get(
-				'https://secure-dusk-73088.herokuapp.com/api/customer/list'
+				'https://iekccxregister.herokuapp.com/api/customer/list'
 			)
 			.then((res) => {
 				console.log(res.data);

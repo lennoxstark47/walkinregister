@@ -15,7 +15,7 @@ export default class Editcx extends Component {
 	componentDidMount() {
 		axios
 			.get(
-				'https://secure-dusk-73088.herokuapp.com/api/customer/' +
+				'https://iekccxregister.herokuapp.com/api/customer/' +
 					this.props.match.params.id
 			)
 			.then((res) => {
@@ -57,7 +57,7 @@ export default class Editcx extends Component {
 
 		axios
 			.put(
-				'https://secure-dusk-73088.herokuapp.com/api/customer/' +
+				'https://iekccxregister.herokuapp.com/api/customer/' +
 					this.props.match.params.id,
 				updatedCx
 			)
