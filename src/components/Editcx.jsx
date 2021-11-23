@@ -84,6 +84,9 @@ export default class Editcx extends Component {
 			remarks: this.state.remarks,
 			isConverted: this.state.isConverted,
 			name: this.state.name,
+			address: this.state.address,
+			phone: this.state.phone,
+			pin: this.state.pin,
 		};
 
 		axios
