@@ -9,6 +9,9 @@ export default class Editcx extends Component {
 			remarks: '',
 			isConverted: null,
 			name: '',
+			phone: '',
+			address: '',
+			pin: '',
 		};
 	}
 
@@ -23,6 +26,9 @@ export default class Editcx extends Component {
 					remarks: res.data.remarks,
 					isConverted: res.data.isConverted,
 					name: res.data.name,
+					phone: res.data.phone,
+					address: res.data.address,
+					pin: res.data.pin,
 				});
 				console.log(res.data);
 			})
@@ -48,11 +54,36 @@ export default class Editcx extends Component {
 		}
 	};
 
+	onNameChange = (event) => {
+		this.setState({
+			name: event.target.value,
+		});
+	};
+
+	onAddressChange = (event) => {
+		this.setState({
+			address: event.target.value,
+		});
+	};
+
+	onPhoneChange = (event) => {
+		this.setState({
+			phone: event.target.value,
+		});
+	};
+
+	onPinChange = (event) => {
+		this.setState({
+			pin: event.target.value,
+		});
+	};
+
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const updatedCx = {
 			remarks: this.state.remarks,
 			isConverted: this.state.isConverted,
+			name: this.state.name,
 		};
 
 		axios
@@ -85,7 +116,7 @@ export default class Editcx extends Component {
 					className='card'
 					style={{
 						width: '20rem',
-						height: '20rem',
+						height: '30rem',
 						marginTop: '10px',
 					}}>
 					<div className='card-body'>
@@ -105,6 +136,29 @@ export default class Editcx extends Component {
 								<div className='card-title'>
 									<h5>{this.state.name}</h5>
 								</div>
+								<input
+									className='form-control'
+									value={this.state.name}
+									onChange={this.onNameChange}
+								/>
+								<input
+									style={{ marginTop: '3px' }}
+									className='form-control'
+									value={this.state.phone}
+									onChange={this.onPhoneChange}
+								/>
+								<input
+									style={{ marginTop: '3px' }}
+									className='form-control'
+									value={this.state.address}
+									onChange={this.onAddressChange}
+								/>
+								<input
+									style={{ marginTop: '3px' }}
+									className='form-control'
+									value={this.state.pin}
+									onChange={this.onPinChange}
+								/>
 								<h6 className='card-subtitle mb-2 text-muted'>
 									Remarks
 								</h6>
@@ -123,7 +177,8 @@ export default class Editcx extends Component {
 									alignItems: 'center',
 									marginTop: '5px',
 								}}>
-								<div style={{ marginLeft: '5px' }}>
+								<div
+									style={{ marginLeft: '5px' }}>
 									{/* <button
 										type='button'
 										className='btn btn-primary'
@@ -132,14 +187,17 @@ export default class Editcx extends Component {
 									</button> */}
 									<span>Convert</span>
 									<Switch
-										checked={this.state.isConverted}
+										checked={
+											this.state.isConverted
+										}
 										onChange={this.onToggle}
 										inputProps={{
 											'aria-label': 'controlled',
 										}}
 									/>
 								</div>
-								<div style={{ marginLeft: '10px' }}>
+								<div
+									style={{ marginLeft: '10px' }}>
 									<button
 										type='button'
 										className='btn btn-primary'
