@@ -18,7 +18,7 @@ export default class Nonconverted extends Component {
 				'https://secure-dusk-73088.herokuapp.com/api/customer/get/nonconverted'
 			)
 			.then((res) => {
-				console.log(res);
+				console.table(res);
 				this.setState({
 					customers: res.data,
 					loading: false,
