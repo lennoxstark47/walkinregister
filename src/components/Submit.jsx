@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import '/src/styles/output.css';
 
 export default class Submit extends Component {
 	constructor() {
