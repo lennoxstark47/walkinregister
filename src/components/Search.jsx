@@ -32,7 +32,7 @@ export default class Search extends Component {
 
 		axios
 			.get(
-				'https://iekccxregister.herokuapp.com/api/customer/getbyphone/' +
+				'https://walkinregister-api.onrender.com/api/customer/getbyphone/' +
 					this.state.phone
 			)
 			.then((res) => {

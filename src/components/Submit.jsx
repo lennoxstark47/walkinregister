@@ -50,7 +50,7 @@ export default class Submit extends Component {
 
 		axios
 			.post(
-				'https://iekccxregister.herokuapp.com/api/customer/add',
+				'https://walkinregister-api.onrender.com/api/customer/add',
 				newCustomer
 			)
 			.then((res) => {

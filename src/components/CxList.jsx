@@ -15,7 +15,7 @@ export default class CxList extends Component {
 		this.setState({ loading: true });
 		axios
 			.get(
-				'https://iekccxregister.herokuapp.com/api/customer/list'
+				'https://walkinregister-api.onrender.com/api/customer/list'
 			)
 			.then((res) => {
 				console.log(res.data);
